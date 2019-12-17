@@ -3,26 +3,22 @@ import os
 
 # CODE FOR CREATING THE SP500 CSV
 # the stock that is to be analyzed
-"""
-sample_df = pd.read_csv("sp500/FB_data.csv")
-sample_df = sample_df.set_index("date")
+
+sample_df = pd.read_csv("dija/AABA_2006-01-01_to_2018-01-01.csv")
+sample_df = sample_df.set_index("Date")
 overall_df = pd.DataFrame(index=sample_df.index)
-
-overall_df['percentageChange'] = 100 * (sample_df['close'] - sample_df['open']) / sample_df['open']
-
-overall_df['result'] = [ 0 if -1 < i and i < 1 else 1 for i in overall_df['percentageChange']]
-for filename in os.listdir("sp500"):
-
+for filename in os.listdir("dija"):
     try:    
-        current_df = pd.read_csv("sp500/" + filename)
-        current_df = current_df.set_index("date")
-        overall_df[filename] = (current_df['close'] - current_df['open']) / current_df['open']
+        current_df = pd.read_csv("dija/" + filename)
+        current_df = current_df.set_index("Date")
+        print(filename[:filename.find("_")])
+        overall_df[filename[:filename.find("_")]] = (current_df['Close'] - current_df['Open']) / current_df['Open']
 
 
     except:
         continue
 
-overall_df.to_csv("sp500.csv")
+overall_df.to_csv("dija.csv")
 print(overall_df.index)
-"""
+
 
