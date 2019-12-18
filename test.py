@@ -1,11 +1,8 @@
 import pandas
 from sklearn.decomposition import PCA
 
-df = pandas.read_csv('sp500.csv')
-df = df.set_index('date')
-#seperating the targets
-
-print(df.columns)
+df = pandas.read_csv('dija_long/AAPL.csv')
+print(df.head())
 #my_pca = PCA(n_components=2)
 #my_pca.fit
 
